@@ -1,9 +1,10 @@
-#### 0.4.0 (2021-10-19)
+#### 0.4.1 (2021-10-19)
 
 # GO OPEN SOURCE! YAY!
 
 ##### New Features
 
+* **CI:**  add rpm build close #20 (8516016c)
 *  change ladder to show book value of airlines instead of flights (0b704abd)
 *  finish TODOs in "airlines page" (c185c0bb)
 
@@ -22,3 +23,5 @@
 *  VA live map will be mixed... (4d83f47b)
 *  vs is using wrong dataref (806c2698)
 *  landing g force calc will use in sim delta (93448e55)
+
+
