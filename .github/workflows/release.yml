@@ -56,4 +56,5 @@ jobs:
             dist/executables/*.exe
             dist/executables/*.dmg
             dist/executables/*.deb
+            dist/executables/*.rpm
           prerelease: true
