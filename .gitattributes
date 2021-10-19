@@ -1,0 +1,8 @@
+apps    export-ignore
+libs    export-ignore
+.*      export-ignore
+*.json  export-ignore
+*.sh    export-ignore
+*.lock  export-ignore
+*.js    export-ignore
+Procfile    export-ignore

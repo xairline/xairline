@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../../../node_modules/nx-electron/src/validation/maker.schema.json",
+  "productName": "X Airline",
+  "copyright": "Copyright © 2021 Di Zou",
+  "asar": true,
+  "win": {
+    "target": "nsis",
+    "icon": "apps/xairline/src/assets/icon.png"
+  },
+  "mac": {
+    "target": "dmg",
+    "icon": "apps/xairline/src/assets/icon.png"
+  },
+  "linux": { "target": "deb", "icon": "apps/xairline/src/assets/icon.png" }
+}

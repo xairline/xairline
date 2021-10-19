@@ -1,0 +1,81 @@
+{
+  "npmScope": "xairline",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "ZGM5OGMwZTItZjg1MS00MjE5LTlmZmItOTFkOWE5ZmNiZmZjfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "api": {
+      "tags": []
+    },
+    "api-airline": {
+      "tags": []
+    },
+    "api-airport": {
+      "tags": []
+    },
+    "api-flight": {
+      "tags": []
+    },
+    "api-flight-report": {
+      "tags": []
+    },
+    "api-livemap": {
+      "tags": []
+    },
+    "api-passenger": {
+      "tags": []
+    },
+    "api-plane": {
+      "tags": []
+    },
+    "electron-airline": {
+      "tags": []
+    },
+    "shared-logger": {
+      "tags": []
+    },
+    "shared-rest-client-remote": {
+      "tags": []
+    },
+    "shared-rest-util": {
+      "tags": []
+    },
+    "shared-xplane-data": {
+      "tags": []
+    },
+    "web": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web"]
+    },
+    "xairline": {
+      "tags": []
+    }
+  }
+}

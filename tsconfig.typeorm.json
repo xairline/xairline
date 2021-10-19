@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "CommonJs",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@xairline/api-plane": ["libs/api/plane/src/index.ts"],
+      "@xairline/electron-airline": ["libs/electron/airline/src/index.ts"],
+      "@xairline/electron-flight": ["libs/electron/flight/src/index.ts"],
+      "@xairline/electron-flight-report": [
+        "libs/electron/flight-report/src/index.ts"
+      ],
+      "@xairline/electron-passenger": ["libs/electron/passenger/src/index.ts"],
+      "@xairline/shared-logger": ["libs/shared/logger/src/index.ts"],
+      "@xairline/shared-xplane-data": ["libs/shared/xplane-data/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
