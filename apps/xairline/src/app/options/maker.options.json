@@ -11,5 +11,6 @@
     "target": "dmg",
     "icon": "apps/xairline/src/assets/icon.png"
   },
-  "linux": { "target": "deb", "icon": "apps/xairline/src/assets/icon.png" }
+  "linux": { "target": "deb", "icon": "apps/xairline/src/assets/icon.png" },
+  "rpm": { "icon": "apps/xairline/src/assets/icon.png" }
 }
