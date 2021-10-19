@@ -1,7 +1,7 @@
 
 
 [![CI](https://github.com/xairline/xairline/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/xairline/xairline/actions/workflows/main.yml)
-
+![CodeQL](https://github.com/xairline/xairline/workflows/CodeQL/badge.svg)
 # X airline
 
 This project started around 2015 and I have rewrite this many times as my own learning journey. There are a lot of anti-best-practice code here that I did in the early days. 
