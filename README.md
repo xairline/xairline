@@ -1,6 +1,8 @@
 
 
-[![CI](https://github.com/xairline/xairline/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/xairline/xairline/actions/workflows/main.yml)
+![CI](https://github.com/xairline/xairline/actions/workflows/main.yml/badge.svg?branch=master)
+![Deployment](https://github.com/xairline/xairline/actions/workflows/heroku.yml/badge.svg?branch=master)
+![Release](https://github.com/xairline/xairline/actions/workflows/release.yml/badge.svg)
 ![CodeQL](https://github.com/xairline/xairline/workflows/CodeQL/badge.svg)
 # X airline
 
