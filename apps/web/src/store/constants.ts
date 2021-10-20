@@ -8,5 +8,5 @@ export const configuration = new Configuration({
 export const remoteConfiguration = new Configuration({
   basePath: environment.production
     ? 'https://xairline.herokuapp.com'
-    : 'http://localhost:3333',
+    : 'https://xairline.herokuapp.com',
 });
