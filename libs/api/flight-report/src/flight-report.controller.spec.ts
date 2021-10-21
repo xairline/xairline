@@ -13,6 +13,7 @@ describe('FlightReportController', () => {
         FlightReportModule,
         TypeOrmModule.forRoot({
           type: 'sqlite',
+          name: 'db2',
           database: `tmp/development.sqlite`,
           synchronize: true,
           logging: false,

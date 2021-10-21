@@ -43,7 +43,10 @@ describe('FleetController', () => {
   });
 
   it('should create a fleet by type', async () => {
-    return request(app.getHttpServer()).get('/Fleet').expect(200);
+    return request(app.getHttpServer())
+      .post('/Fleet')
+      .send({ aircraft_type: 'B737-800' })
+      .expect(201);
   });
 
   afterAll(async () => {

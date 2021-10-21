@@ -46,6 +46,10 @@ export class FleetController implements CrudController<Fleet> {
     if (listedFleet.length > 0) {
       return;
     }
-    // create a plane
+    // gen plane from metadata
+    // random configuration
+    // random paxCapacity
+    // random price
+    // save to database
   }
 }
