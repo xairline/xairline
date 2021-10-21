@@ -93,6 +93,27 @@
         }
       }
     },
+    "api-fleet": {
+      "root": "libs/api/fleet",
+      "sourceRoot": "libs/api/fleet/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/fleet/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/fleet"],
+          "options": {
+            "jestConfig": "libs/api/fleet/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "api-flight": {
       "root": "libs/api/flight",
       "sourceRoot": "libs/api/flight/src",

@@ -22,6 +22,7 @@
       "@xairline/api-livemap": ["libs/api/livemap/src/index.ts"],
       "@xairline/api-passenger": ["libs/api/passenger/src/index.ts"],
       "@xairline/api-plane": ["libs/api/plane/src/index.ts"],
+      "@xairline/api-fleet": ["libs/api/fleet/src/index.ts"],
       "@xairline/electron-airline": ["libs/electron/airline/src/index.ts"],
       "@xairline/electron-flight": ["libs/electron/flight/src/index.ts"],
       "@xairline/shared-logger": ["libs/shared/logger/src/index.ts"],
