@@ -1,14 +1,12 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { jest } from '@jest/globals';
-import { Repository } from 'typeorm';
-import * as request from 'supertest';
-import { Fleet } from './fleet.entity';
-import { FleetService } from './fleet.service';
-import { FleetModule } from './fleet.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { INestApplication } from '@nestjs/common';
-import { FleetController } from './fleet.controller';
-import { JwtModule } from '@nestjs/jwt';
+import { Test, TestingModule } from '@nestjs/testing';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtGuard } from '@xairline/shared-rest-util';
+import * as request from 'supertest';
+import { Repository } from 'typeorm';
+import { Fleet } from './fleet.entity';
+import { FleetModule } from './fleet.module';
 export type MockType<T> = {
   // eslint-disable-next-line @typescript-eslint/ban-types
   [P in keyof T]?: jest.Mock<{}>;
@@ -34,12 +32,12 @@ describe('FleetController', () => {
           entities: [Fleet],
         }),
         TypeOrmModule.forFeature([Fleet]),
-        JwtModule.register({
-          secret: process.env.JWT_SECRET || 'ofcIDoNotUseThisOnProductio',
-        }),
         FleetModule,
       ],
-    }).compile();
+    })
+      .overrideGuard(JwtGuard)
+      .useValue({ canActivate: () => true })
+      .compile();
     app = module.createNestApplication();
     await app.init().catch((e) => console.log(e));
   });
