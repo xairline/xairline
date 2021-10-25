@@ -1,4 +1,10 @@
-import { Controller, Post, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  HttpCode,
+  HttpException,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import {
   Crud,
@@ -11,10 +17,7 @@ import {
 import { getLogger } from '@xairline/shared-logger';
 import { Plane, PlaneApi } from '@xairline/shared-rest-client-remote';
 import { JwtGuard, remoteConfiguration } from '@xairline/shared-rest-util';
-import {
-  getDefaultCapacityByType,
-  XPlaneData,
-} from '@xairline/shared-xplane-data';
+import { XPlaneData } from '@xairline/shared-xplane-data';
 import { Passenger } from '../passenger.entity';
 import { PassengerService } from '../passenger.service';
 const planeApi = new PlaneApi(remoteConfiguration);
@@ -63,8 +66,7 @@ export class PassengerController implements CrudController<Passenger> {
       baseCapacity = planes[0].capacity;
       logger.info(`use own plane: ${baseCapacity}`);
     } else {
-      baseCapacity = getDefaultCapacityByType(dto.aircraft_type);
-      logger.info(`lease a plane: ${baseCapacity}`);
+      throw new HttpException('Cannot find an aviable plane', 404);
     }
     const passenger: Passenger = {
       id: dto.id,

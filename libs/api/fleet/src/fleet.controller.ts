@@ -47,9 +47,6 @@ export class FleetController implements CrudController<Fleet> {
       return;
     }
     // gen plane from metadata
-    // random configuration
-    // random paxCapacity
-    // random price
-    // save to database
+
   }
 }

@@ -16,7 +16,6 @@ import {
 import {
   DATAREF_FEQ,
   FlightData,
-  getLeasePriceByType,
   Rules,
   XPlaneData,
 } from '@xairline/shared-xplane-data';
@@ -59,7 +58,6 @@ export class FlyNowStore {
   public ws: WebSocket | undefined;
   private engine!: Engine;
   public rules!: Rules;
-  public isLeased!: boolean;
   public plane!: Plane;
 
   constructor() {
@@ -77,7 +75,6 @@ export class FlyNowStore {
     this.selectedFlight = undefined;
     this.vaType = undefined;
     this.isTracking = false;
-    this.isLeased = false;
     this.loadBookableFlights();
   }
 
@@ -333,15 +330,17 @@ export class FlyNowStore {
 
       const flightReport: FlightReport = await this.createFlightReport();
 
-      if (!this.isLeased) {
-        //set plane back to normal
-        // set that plan to in_flight
-        await planeApi.updateOneBasePlaneControllerPlane(
-          this.plane.id as number,
-          { ...this.plane, status: 'normal' }
-        );
-        logger.info('set plane back to normal');
-      }
+      //set plane back to normal
+      // set that plan to in_flight
+      await planeApi
+        .updateOneBasePlaneControllerPlane(this.plane.id as number, {
+          ...this.plane,
+          status: 'normal',
+        })
+        .catch((e) => {
+          logger.error(e);
+        });
+      logger.info('set plane back to normal');
 
       await this.updateAirlineRevenue(data, satisfication, flightReport);
 
@@ -377,28 +376,7 @@ export class FlyNowStore {
     logger.info('updated airlne revenue');
   }
   private async createFlightReport(): Promise<FlightReport> {
-    const actual_flight_time =
-      this.flightData.endTime - this.flightData.startTime;
-    const leasedTime =
-      actual_flight_time > this.selectedFlight.estimated_flight_time
-        ? actual_flight_time
-        : this.selectedFlight.estimated_flight_time;
-    const cost: any[] = [
-      ...(this.isLeased
-        ? [
-            {
-              name: 'Leasing',
-              cost: XPlaneData.dataRoundup(
-                (50 *
-                  getLeasePriceByType(this.paxSheet.aircraft_type as string) *
-                  leasedTime) /
-                  1000 /
-                  60
-              ),
-            },
-          ]
-        : []),
-    ];
+    const cost: any[] = [];
     cost.push({
       name: `XAA Violation Penalties x${this.flightData.violationEvents.length}`,
       cost: XPlaneData.dataRoundup(

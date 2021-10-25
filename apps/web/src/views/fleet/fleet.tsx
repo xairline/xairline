@@ -8,7 +8,7 @@ import {
   PlaneApi,
 } from '@xairline/shared-rest-client-remote';
 import {
-  getSupportedAircrafts,
+  SupportedAircrafts,
   XPlaneData,
 } from '@xairline/shared-xplane-data';
 import {
@@ -40,7 +40,7 @@ const COMMON_PLANE_COLUMNS = [
     dataIndex: 'aircraft_type',
     key: 'type',
     filterSearch: true,
-    filters: getSupportedAircrafts().map((aircraft) => {
+    filters: SupportedAircrafts().map((aircraft) => {
       return { text: aircraft, value: aircraft };
     }),
     onFilter: (value: any, record: Plane) =>

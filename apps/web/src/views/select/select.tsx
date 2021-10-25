@@ -2,7 +2,7 @@ import { getLogger } from '@xairline/shared-logger';
 import { Flight, FlightApi } from '@xairline/shared-rest-client-remote';
 import {
   GetFlightTime,
-  getSupportedAircrafts,
+  SupportedAircrafts,
   Rules,
   XPlaneData,
 } from '@xairline/shared-xplane-data';
@@ -83,7 +83,7 @@ export function Select(props: SelectProps) {
       dataIndex: 'aircraft',
       key: 'aircraft',
       filterSearch: true,
-      filters: getSupportedAircrafts().map((aircraft) => {
+      filters: SupportedAircrafts().map((aircraft) => {
         return { text: aircraft, value: aircraft };
       }),
       onFilter: (value: any, record: any) =>
@@ -200,8 +200,8 @@ export function Select(props: SelectProps) {
               >
                 {getSupportedAircrafts().map((aircraft) => {
                   return (
-                    <AntdSelect.Option value={aircraft} key={aircraft}>
-                      {aircraft}
+                    <AntdSelect.Option value={value} key={`${key}`}>
+                      {key}
                     </AntdSelect.Option>
                   );
                 })}
