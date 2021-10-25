@@ -29,7 +29,7 @@ import { FlightService } from './flight.service';
 @ApiTags('Flight')
 @Controller('Flight')
 @ApiBearerAuth()
-@UseGuards(JwtGuard)
+//@UseGuards(JwtGuard)
 export class FlightController implements CrudController<Flight> {
   constructor(public service: FlightService) {}
   get base(): CrudController<Flight> {
