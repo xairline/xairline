@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getLogger } from '@xairline/shared-logger';
 import { Plane, PlaneApi } from '@xairline/shared-rest-client-remote';
 import {
-  getSupportedAircrafts,
+  SupportedAircrafts,
   Rules,
   XPlaneData,
 } from '@xairline/shared-xplane-data';
@@ -69,7 +69,6 @@ export function Load(props: LoadProps) {
                   }
                 );
                 if (planes.length > 0) {
-                  FlyNowStore.isLeased = false;
                   FlyNowStore.plane = planes[0];
                   // set that plan to in_flight
                   await planeApi.updateOneBasePlaneControllerPlane(
@@ -77,9 +76,6 @@ export function Load(props: LoadProps) {
                     { ...FlyNowStore.plane, status: 'in_flight' }
                   );
                   logger.info('use plane you own');
-                } else {
-                  FlyNowStore.isLeased = true;
-                  logger.info('lease a plane');
                 }
                 runInAction(() => {
                   FlyNowStore.isTracking = false;
@@ -170,7 +166,7 @@ export function Load(props: LoadProps) {
                       style={{ width: '180px' }}
                       value={FlyNowStore.selectedFlight.aircraft}
                     >
-                      {getSupportedAircrafts().map((aircraft) => {
+                      {SupportedAircrafts().map((aircraft) => {
                         return (
                           <Select.Option value={aircraft} key={aircraft}>
                             {aircraft}

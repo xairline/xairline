@@ -3,7 +3,7 @@ import {
   AirlineRelationsApi,
   Plane,
 } from '@xairline/shared-rest-client-remote';
-import { getSupportedAircrafts } from '@xairline/shared-xplane-data';
+import { SupportedAircrafts } from '@xairline/shared-xplane-data';
 import { Button, Col, Popconfirm, Row, Table } from 'antd';
 import { useObserver } from 'mobx-react-lite';
 import { useEffect } from 'react';
@@ -26,7 +26,7 @@ export function Pilots(props: PilotsProps) {
       dataIndex: 'name',
       key: 'name',
       filterSearch: true,
-      filters: getSupportedAircrafts().map((aircraft) => {
+      filters: SupportedAircrafts().map((aircraft) => {
         return { text: aircraft, value: aircraft };
       }),
       onFilter: (value: any, record: Plane) =>

@@ -1,9 +1,4 @@
-import {
-  COMMON_DESCEND_RULES,
-  COMMON_TAXI_RULES,
-  DEFAULT_RULES,
-  IRules,
-} from './rules';
+import { IRules, DEFAULT_RULES, COMMON_TAXI_RULES, COMMON_DESCEND_RULES } from '../rules';
 
 export const RULES: IRules = {
   defaultRules: DEFAULT_RULES,
@@ -86,7 +81,7 @@ export const RULES: IRules = {
             fact: 'dataref',
             path: '$.pitch',
             operator: 'greaterThan',
-            value: 22,
+            value: 20,
           },
           {
             fact: 'dataref',
@@ -109,8 +104,80 @@ export const RULES: IRules = {
         },
       },
     },
+    {
+      name: 'Climb: Speed is too slow',
+      priority: 1,
+      conditions: {
+        all: [
+          {
+            fact: 'dataref',
+            path: '$.ts',
+            operator: 'greaterThan',
+            value: 0,
+          },
+          {
+            fact: 'dataref',
+            path: '$.ias',
+            operator: 'lessThan',
+            value: 140,
+          },
+          {
+            fact: 'dataref',
+            path: '$.state',
+            operator: 'equal',
+            value: 'climb',
+          },
+        ],
+      },
+      event: {
+        type: 'climb',
+        params: {
+          event: 'climb speed is too slow (< 140kt)',
+        },
+      },
+    },
+    {
+      name: 'Climb: Speed is too fast',
+      priority: 1,
+      conditions: {
+        all: [
+          {
+            fact: 'dataref',
+            path: '$.ts',
+            operator: 'greaterThan',
+            value: 0,
+          },
+          {
+            fact: 'dataref',
+            path: '$.ias',
+            operator: 'greaterThan',
+            value: 250,
+          },
+          {
+            fact: 'dataref',
+            path: '$.elevation',
+            operator: 'lessThan',
+            value: 10000 / 3.28,
+          },
+          {
+            fact: 'dataref',
+            path: '$.state',
+            operator: 'equal',
+            value: 'climb',
+          },
+        ],
+      },
+      event: {
+        type: 'climb',
+        params: {
+          event: 'climb speed is too fast (> 250kt below 10,000ft)',
+        },
+      },
+    },
   ],
-  descendRules: [...COMMON_DESCEND_RULES],
+  descendRules: [
+    ...COMMON_DESCEND_RULES
+  ],
   landingRules: [
     {
       name: 'Landing: AOA_too_small',
@@ -127,7 +194,7 @@ export const RULES: IRules = {
             fact: 'dataref',
             path: '$.pitch',
             operator: 'lessThan',
-            value: 1,
+            value: 2,
           },
           {
             fact: 'dataref',
@@ -144,9 +211,9 @@ export const RULES: IRules = {
         ],
       },
       event: {
-        type: 'climb',
+        type: 'landing',
         params: {
-          event: 'angle of attack is too small during landing (< 1 deg)',
+          event: 'angle of attack is too small during landing (< 2 deg)',
         },
       },
     },
@@ -165,7 +232,7 @@ export const RULES: IRules = {
             fact: 'dataref',
             path: '$.pitch',
             operator: 'greaterThan',
-            value: 8,
+            value: 10,
           },
           {
             fact: 'dataref',
@@ -182,9 +249,9 @@ export const RULES: IRules = {
         ],
       },
       event: {
-        type: 'climb',
+        type: 'landing',
         params: {
-          event: 'angle of attack is too much during landing (> 8 deg)',
+          event: 'angle of attack is too much during landing (> 10 deg)',
         },
       },
     },

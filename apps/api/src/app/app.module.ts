@@ -22,6 +22,7 @@ import {
   FlightReportModule,
   GetFlightReportMigrations,
 } from '@xairline/api-flight-report';
+import { Fleet, FleetModule, GetFleetMigrations } from '@xairline/api-fleet';
 import {
   GetPassengerMigrations,
   Passenger,
@@ -47,8 +48,9 @@ import {
         ...GetAirlineMigrations(),
         //...GetAirportMigrations(),
         ...GetFlightMigrations(),
+        ...GetFleetMigrations(),
       ],
-      entities: [Plane, Airline, AirlineToAirlineRelation, Flight],
+      entities: [Plane, Airline, AirlineToAirlineRelation, Flight, Fleet],
     }),
     TypeOrmModule.forRoot({
       name: 'db2',
@@ -79,6 +81,7 @@ import {
     //AirportModule,
     LivemapModule,
     FlightModule,
+    FleetModule,
   ],
 })
 export class AppModule {}

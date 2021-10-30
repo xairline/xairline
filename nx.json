@@ -37,6 +37,9 @@
     "api-airport": {
       "tags": []
     },
+    "api-fleet": {
+      "tags": []
+    },
     "api-flight": {
       "tags": []
     },
