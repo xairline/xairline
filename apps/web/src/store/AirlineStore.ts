@@ -117,6 +117,12 @@ export class AirlineStore {
           id: this.pilotId,
           password: airlines[0].machine_id,
         });
+        setInterval(() => {
+          remoteAirlieApi.airlineControllerV2Login({
+            id: this.pilotId,
+            password: airlines[0].machine_id,
+          });
+        }, 15 * 1000);
 
         const { data } =
           await remoteAirlieApi.getOneBaseAirlineControllerV2Airline(
