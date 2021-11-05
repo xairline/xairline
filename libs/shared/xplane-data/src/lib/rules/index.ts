@@ -21,15 +21,15 @@ export const getSupportedAircrafts = () => [
 
 export const getDefaultCapacityByType = (type: string): number => {
   const defaultCapacity = {
-    'B737-800': 220,
-    'B747-400': 568,
+    'B737-800': 144,
+    'B747-400': 416,
     'B747-8': 467,
-    'B767-300': 245,
-    'B777-200': 405,
-    'B777-200LR': 385,
-    'B777-300ER': 440,
-    'B787-8': 242,
-    'B787-9': 290,
+    'B767-300': 290,
+    'B777-200': 313,
+    'B777-200LR': 313,
+    'B777-300ER': 396,
+    'B787-8': 359,
+    'B787-9': 406,
     A319: 120,
     A320: 170,
     A321: 200,
